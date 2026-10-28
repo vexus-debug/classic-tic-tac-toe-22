@@ -981,3 +981,8 @@ html.dashboard-dark { background-color: hsl(215 32% 8%); color-scheme: dark; }
   border-radius: 999px; padding: 0.375rem 0.875rem;
   font-size: 0.8125rem; color: hsl(var(--foreground));
 }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

@@ -123,7 +123,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-9 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "border-b border-border/60 bg-background/90 shadow-sm backdrop-blur-xl"
           : darkHero
@@ -240,7 +240,7 @@ const Navbar = () => {
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
-          className="md:hidden fixed inset-x-0 bottom-0 top-16 z-[999] flex flex-col bg-background animate-in fade-in slide-in-from-top-2 duration-200"
+          className="md:hidden fixed inset-x-0 bottom-0 top-[100px] z-[999] flex flex-col bg-background animate-in fade-in slide-in-from-top-2 duration-200"
         >
           <div className="flex items-center justify-between border-b border-border/70 px-5 py-4">
             <Link to="/" onClick={close} aria-label="Clinexus home">
