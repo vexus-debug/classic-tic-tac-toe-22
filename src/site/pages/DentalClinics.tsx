@@ -20,13 +20,13 @@ import {
   Pill,
   Receipt,
 } from "lucide-react";
-import shotPatientsAsset from "@/assets/current-dashboard/dental-patients.png.asset.json";
-import shotAppointmentsAsset from "@/assets/current-dashboard/dental-appointments.png.asset.json";
-import shotChartsAsset from "@/assets/current-dashboard/dental-charts.png.asset.json";
-import shotBillingAsset from "@/assets/current-dashboard/dental-billing.png.asset.json";
-import shotInventoryAsset from "@/assets/current-dashboard/dental-inventory.png.asset.json";
-import shotDashboardAsset from "@/assets/current-dashboard/dental-dashboard.png.asset.json";
-import shotTreatmentsAsset from "@/assets/current-dashboard/dental-treatments.png.asset.json";
+import shotPatientsAsset from "@/assets/current-dashboard/dental-patients-2026-10.png.asset.json";
+import shotAppointmentsAsset from "@/assets/current-dashboard/dental-appointments-2026-10.png.asset.json";
+import shotChartsAsset from "@/assets/current-dashboard/dental-charts-2026-10.png.asset.json";
+import shotBillingAsset from "@/assets/current-dashboard/dental-billing-2026-10.png.asset.json";
+import shotInventoryAsset from "@/assets/current-dashboard/dental-inventory-2026-10.png.asset.json";
+import shotDashboardAsset from "@/assets/current-dashboard/dental-dashboard-2026-10.png.asset.json";
+import shotTreatmentsAsset from "@/assets/current-dashboard/dental-treatments-2026-10.png.asset.json";
 const shotTreatments = shotTreatmentsAsset.url;
 import { LocalSeo } from "@/site/components/LocalSeo";
 import { CapabilityMatrix, ClosingBanner, PricingEstimator, type CapabilityGroup } from "@/site/components/industry/IndustrySections";
