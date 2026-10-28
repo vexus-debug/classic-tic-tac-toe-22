@@ -13,6 +13,15 @@ export interface UpdateEntry {
 
 export const updates: UpdateEntry[] = [
   {
+    version: "v2.6.1",
+    date: "October 28, 2026",
+    title: "Scrolling announcement bar on the website",
+    kind: "improvement",
+    items: [
+      { kind: "improvement", text: "A scrolling notice at the top of every website page now highlights Clinexus AI in clinical workflows." },
+    ],
+  },
+  {
     version: "v2.6.0",
     date: "October 28, 2026",
     title: "AI clinical copilot: notes, Rx safety, billing audit, lab alerts, slot fill",
