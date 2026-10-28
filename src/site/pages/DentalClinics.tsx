@@ -15,6 +15,10 @@ import {
   Smile,
   Users,
   Wallet,
+  Sparkles,
+  FileText,
+  Pill,
+  Receipt,
 } from "lucide-react";
 import shotPatientsAsset from "@/assets/current-dashboard/dental-patients.png.asset.json";
 import shotAppointmentsAsset from "@/assets/current-dashboard/dental-appointments.png.asset.json";
@@ -22,6 +26,8 @@ import shotChartsAsset from "@/assets/current-dashboard/dental-charts.png.asset.
 import shotBillingAsset from "@/assets/current-dashboard/dental-billing.png.asset.json";
 import shotInventoryAsset from "@/assets/current-dashboard/dental-inventory.png.asset.json";
 import shotDashboardAsset from "@/assets/current-dashboard/dental-dashboard.png.asset.json";
+import shotTreatmentsAsset from "@/assets/current-dashboard/dental-treatments.png.asset.json";
+const shotTreatments = shotTreatmentsAsset.url;
 import { LocalSeo } from "@/site/components/LocalSeo";
 import { CapabilityMatrix, ClosingBanner, PricingEstimator, type CapabilityGroup } from "@/site/components/industry/IndustrySections";
 
@@ -61,6 +67,13 @@ const modules = [
   { icon: Wallet, name: "Billing", shot: shotBilling, shotAlt: "Billing screen with invoices, amounts owed and payment status", benefit: "You worked for that money. Watch it come home.", body: "There's nothing worse than a month-end total that doesn't match the work you put in. See who owes you, who's on a payment plan, and what each treatment really costs you to deliver — so your numbers finally reflect the care you give." },
   { icon: Boxes, name: "Inventory", shot: shotInventory, shotAlt: "Inventory list showing stock levels and low-stock alerts", benefit: "Never reach for something that isn't there.", body: "You're mid-procedure. The last thing you should be doing is wondering whether that material ran out yesterday. Know what's on the shelf before the patient sits down, not while they're in the chair. Low-stock alerts, suppliers and purchase orders, all in one place." },
   { icon: ShieldCheck, name: "Oversight & access", shot: shotDashboard, shotAlt: "Clinic dashboard with patient count, revenue and today's schedule", benefit: "You see everything. Your staff see only their part.", body: "Patient numbers, today's schedule, pending payments and monthly revenue on one screen — the whole clinic in a single glance, before you even take off your coat. Each person on your team only sees what their job needs, so you can let go without losing control." },
+];
+
+const aiFeatures = [
+  { icon: FileText, name: "AI SOAP notes", shot: shotCharts, shotAlt: "Dental chart whose findings feed the AI-drafted SOAP note", benefit: "Your notes, drafted before the patient leaves the chair.", points: ["Drafts Subjective, Objective, Assessment and Plan from today's chart", "Flags anything missing as \"clinician to confirm\"", "You edit and sign — nothing saves on its own"] },
+  { icon: Pill, name: "Prescription safety", shot: shotTreatments, shotAlt: "Treatment screen where prescriptions are checked by AI", benefit: "A second pair of eyes on every prescription.", points: ["Checks drug interactions against current medications", "Catches allergy conflicts, including cross-reactions", "Rates each concern high, moderate or low with an alternative"] },
+  { icon: Receipt, name: "Missed-billing check", shot: shotBilling, shotAlt: "Billing screen where AI suggests unbilled treatments", benefit: "Work you did today doesn't slip off the bill.", points: ["Compares today's charted work against the invoice", "Only suggests items from your own treatment list", "Conservative by design — no guesses, no duplicates"] },
+  { icon: CalendarClock, name: "Fast-fill & aftercare", shot: shotAppointments, shotAlt: "Appointment calendar where AI suggests patients for an open slot", benefit: "Empty chairs filled, patients sent home informed.", points: ["Ranks patients with pending treatment for a cancelled slot", "Writes simple post-op instructions from today's procedures", "Tailors consent forms with patient-specific risks"] },
 ];
 
 
@@ -187,6 +200,29 @@ const DentalClinics = () => {
                 </motion.li>
               ))}
             </ol>
+          </section>
+
+          <section id="ai" className="mb-16 scroll-mt-24 lg:mb-24">
+            <motion.p initial="hidden" whileInView="show" viewport={viewport} variants={reveal} className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-primary"><Sparkles className="h-4 w-4" /> AI in your clinical workflow</motion.p>
+            <motion.h2 initial="hidden" whileInView="show" viewport={viewport} variants={reveal} className="mb-4 text-2xl font-bold text-foreground md:text-3xl">
+              An assistant beside the chair, <span className="text-muted-foreground">not another screen to learn</span>
+            </motion.h2>
+            <motion.p initial="hidden" whileInView="show" viewport={viewport} variants={reveal} className="mb-10 max-w-2xl text-muted-foreground">
+              Clinexus AI reads the patient's own history and chart — it never invents facts, and it never changes a record without you. You review, edit and approve every suggestion.
+            </motion.p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {aiFeatures.map((f, i) => (
+                <motion.article key={f.name} initial="hidden" whileInView="show" viewport={viewport} variants={slide(i % 2 ? "right" : "left")} className="eye-panel min-w-0 overflow-hidden rounded-2xl p-5 sm:rounded-3xl sm:p-6">
+                  <Screenshot src={f.shot} alt={f.shotAlt} />
+                  <div className="mb-3 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10"><f.icon className="h-5 w-5 text-primary" /></div>
+                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{f.name}</span>
+                  </div>
+                  <h3 className="mb-2 text-lg font-bold leading-snug text-card-foreground">{f.benefit}</h3>
+                  <ul className="space-y-2">{f.points.map((p) => <li key={p} className="flex items-start gap-2.5 text-sm leading-relaxed text-muted-foreground"><Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><span>{p}</span></li>)}</ul>
+                </motion.article>
+              ))}
+            </div>
           </section>
 
           <CapabilityMatrix
